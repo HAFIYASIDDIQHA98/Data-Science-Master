@@ -1,0 +1,12 @@
+import pandas as pd
+
+# Sample data
+df = pd.DataFrame({'Price': [100, 120, 110, 105, 5000, 115]}) # 5000 is an outlier
+
+Q1 = df['Price'].quantile(0.25)
+Q3 = df['Price'].quantile(0.75)
+IQR = Q3 - Q1
+
+# Filter outliers
+df_clean = df[~((df['Price'] < (Q1 - 1.5 * IQR)) | (df['Price'] > (Q3 + 1.5 * IQR)))]
+print("Cleaned Data:\n", df_clean)
