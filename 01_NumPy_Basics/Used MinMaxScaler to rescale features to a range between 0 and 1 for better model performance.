@@ -1,0 +1,12 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Dataset load karein
+iris = sns.load_dataset("iris")
+# Correlation matrix nikalein
+corr_matrix = iris.corr()
+
+# Heatmap se visualize karein
+sns.heatmap(corr_matrix, annot=True, cmap='coolwarm')
+plt.title("Feature Correlation")
+plt.show()
